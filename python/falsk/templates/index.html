@@ -1,0 +1,71 @@
+<html>
+
+<body>
+  
+   <img src="{{img}}"> <br>
+   {{id}}
+   <form action="{{type}}" method="POST" id="myForm">
+      <input name="id" value="{{id}}" style="display :none">
+      <input type="radio" name="point" value="1"> 1 <br>
+      <input type="radio" name="point" value="2"> 2 <br>
+      <input type="radio" name="point" value="3"> 3 <br>
+      <input type="radio" name="point" value="4"> 4 <br>
+      <input type="submit"> 
+   </form>
+</body>
+
+<head>
+
+
+
+   <script>
+
+
+      function jump(){
+         var a = document.getElementById("a").value;
+         var id = "{{id}}"
+	      url = "/test?id=" + id + "&a=" + a
+	      window.location.href = url;
+      }
+
+      function t(){
+         const XHR = new XMLHttpRequest();
+
+                  // 获取表单元素
+         const form = document.getElementById("myForm");
+         // 我们把这个 FormData 和表单元素绑定在一起。
+         const FD = new FormData(form);
+         console.log(FD)
+         
+    // 我们定义了数据成功发送时会发生的事件
+    XHR.addEventListener("load", (event) => {
+       
+    });
+
+    // 我们定义了失败的情形下会发生的事件
+    XHR.addEventListener("error", (event) => {
+      alert("哎呀！出了一些问题。");
+    });
+
+    // 我们设置了我们的请求
+    XHR.open("POST", "/test");
+
+    // 发送的数据是由用户在表单中提供的
+    XHR.send(FD);
+  
+
+
+      }
+
+      
+
+
+
+
+
+
+
+   </script>
+</head>
+</html>
+
